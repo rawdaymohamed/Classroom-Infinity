@@ -64,6 +64,8 @@ cd Media-Buzz
 
 2. Run the Backend
 
+- Start MongoDB
+
 ```
 sudo mongod --port 27017
 ```
