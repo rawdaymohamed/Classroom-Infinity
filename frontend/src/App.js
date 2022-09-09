@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router';
+import NavBar from './core/NavBar';
 import NotFound from './core/NotFound';
 import Login from './auth/Login';
 const Home = () => <>Home</>;

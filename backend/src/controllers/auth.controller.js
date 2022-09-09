@@ -5,10 +5,10 @@ import config from '../config';
 export const login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
-    console.log(user);
-    const isAuthenticated = user.authenticate(req.body.password);
-    console.log(isAuthenticated);
-    if (!user || !isAuthenticated) {
+
+    const isAuthenticated = user && user.authenticate(req.body.password);
+
+    if (!isAuthenticated || !user) {
       return res
         .status(401)
         .json({ error: 'Sorry. The email or password not correct' });
@@ -20,7 +20,7 @@ export const login = async (req, res) => {
       user: { _id: user._id, name: user.name, email: user.email },
     });
   } catch (err) {
-    return res.status(401).json({ error: "Sorry.. couldn't login" });
+    return res.status(401).json({ error: "Sorry couldn't login" });
   }
 };
 export const logout = (req, res) => {

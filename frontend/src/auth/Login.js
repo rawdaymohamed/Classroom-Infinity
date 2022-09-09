@@ -17,7 +17,24 @@ import Typography from '@mui/material/Typography';
 import useInput from '../hooks/useInput';
 import { login } from './api-auth';
 import { authenticate } from './auth-helper';
-
+const ErrorMsg = ({ error }) => {
+  return (
+    <Typography
+      component='p'
+      color='error'
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <ErrorIcon color='error' sx={{ mr: '3px' }}>
+        error
+      </ErrorIcon>
+      {error}
+    </Typography>
+  );
+};
 const Login = () => {
   const [passwordProps, resetPassword] = useInput('');
   const [emailProps, resetEmail] = useInput('');
@@ -90,22 +107,7 @@ const Login = () => {
                 />
               </FormControl>
             </div>
-            {error && (
-              <Typography
-                component='p'
-                color='error'
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <ErrorIcon color='error' sx={{ mr: '3px' }}>
-                  error
-                </ErrorIcon>
-                {error}
-              </Typography>
-            )}
+            {error && <ErrorMsg error={error} />}
           </Box>
         </CardContent>
         <CardActions sx={{ justifyContent: 'center', mb: 2 }}>
