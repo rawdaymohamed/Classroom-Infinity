@@ -62,15 +62,15 @@ git clone https://github.com/rawda-yasser/Media-Buzz
 cd Media-Buzz
 ```
 
-2. Run the Backend
+### Run the Backend
 
-- Start MongoDB
+Start MongoDB
 
 ```
 sudo mongod --port 27017
 ```
 
-- Open a new terminal
+Open a new terminal
 
 ```
 cd backend
@@ -78,9 +78,9 @@ npm i
 npm run dev
 ```
 
-3. Run the frontend
+### Run the frontend
 
-- Open a new terminal
+Open a new terminal
 
 ```
 cd frontend
