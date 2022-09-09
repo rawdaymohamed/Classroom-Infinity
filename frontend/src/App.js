@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router';
-import './App.css';
+import NotFound from './core/NotFound';
 
 const Home = () => <>Home</>;
 
@@ -7,6 +7,7 @@ function App() {
   return (
     <Routes>
       <Route exact path='/' element={<Home />} />
+      <Route path='*' element={<NotFound />} />
     </Routes>
   );
 }
