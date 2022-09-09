@@ -28,6 +28,10 @@ const UserSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
+  instructor: {
+    type: Boolean,
+    default: false,
+  },
 });
 UserSchema.virtual('password')
   .set(function (password) {

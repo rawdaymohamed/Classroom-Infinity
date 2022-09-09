@@ -16,6 +16,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ErrorIcon from '@mui/icons-material/Error';
 import Avatar from '@mui/material/Avatar';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Switch from '@mui/material/Switch';
 import { read, update } from './api-user';
 import { isAuthenticated } from '../auth/auth-helper';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
@@ -31,6 +33,7 @@ const EditProfile = () => {
   const [redirectToLogin, setRedirectToLogin] = React.useState(false);
   const [redirectToProfile, setRedirectToProfile] = React.useState(false);
   const [photoUrl, setPhotoUrl] = React.useState('');
+  const [instructor, setInstructor] = React.useState(false);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -51,6 +54,7 @@ const EditProfile = () => {
         } else if (data) {
           setName(data.name);
           setEmail(data.email);
+          setInstructor(data.instructor);
           data.about && setAbout(data.about);
         }
       });
@@ -66,7 +70,7 @@ const EditProfile = () => {
     password && userData.append('password', password);
     about && userData.append('about', about);
     photo && userData.append('photo', photo);
-
+    instructor && userData.append('instructor', instructor);
     const jwt = isAuthenticated();
     if (!jwt) {
       setRedirectToLogin(true);
@@ -162,6 +166,15 @@ const EditProfile = () => {
                     </InputAdornment>
                   }
                   label='Password'
+                />
+              </FormControl>
+            </div>
+            <div>
+              <FormControl sx={{ m: 1, width: '266px' }}>
+                <label>{instructor ? 'Instructor' : 'Student'}</label>
+                <Switch
+                  checked={instructor}
+                  onChange={(e) => setInstructor(e.target.checked)}
                 />
               </FormControl>
             </div>

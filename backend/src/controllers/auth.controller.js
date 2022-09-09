@@ -13,11 +13,24 @@ export const login = async (req, res) => {
         .status(401)
         .json({ error: 'Sorry. The email or password not correct' });
     }
-    const token = jwt.sign({ _id: user._id }, config.jwtSecret);
+    const token = jwt.sign(
+      {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        instructor: user.instructor,
+      },
+      config.jwtSecret
+    );
     res.cookie('t', token, { expire: new Date() + 9999 });
     return res.status(200).json({
       token,
-      user: { _id: user._id, name: user.name, email: user.email },
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        instructor: user.instructor,
+      },
     });
   } catch (err) {
     return res.status(401).json({ error: "Sorry couldn't login" });

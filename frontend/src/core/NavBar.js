@@ -37,7 +37,6 @@ const NavBar = () => {
     setAnchorElUser(null);
   };
 
-  const preventDefault = (e) => e.preventDefault();
   return (
     <AppBar position='static' sx={{ mb: 2 }}>
       <Container maxWidth='xl'>
@@ -117,6 +116,18 @@ const NavBar = () => {
               Home
             </Button> */}
           </Box>
+          {isAuthenticated() && isAuthenticated().user.instructor && (
+            <Button
+              sx={{
+                mx: 2,
+                color: 'white',
+                display: 'block',
+                fontWeight: 'bold',
+              }}
+            >
+              Teach
+            </Button>
+          )}
           {!isAuthenticated() && (
             <>
               <Button
