@@ -2,16 +2,18 @@ import express from 'express';
 import mongoose from 'mongoose';
 import config from './config';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import 'dotenv/config';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.route';
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
   res.send('Classroom Infinity');
 });
-
+app.use(cors({ origin: '*' }));
 app.use('/', userRoutes);
 app.use('/', authRoutes);
 app.listen(config.port, () => {
