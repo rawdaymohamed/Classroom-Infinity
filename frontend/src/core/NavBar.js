@@ -87,23 +87,7 @@ const NavBar = () => {
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
-            >
-              <MenuItem
-                onClick={(e) => {
-                  handleCloseNavMenu();
-                  preventDefault(e);
-                }}
-              >
-                <Link
-                  textAlign='center'
-                  component={RouterLink}
-                  to='/'
-                  underline='none'
-                >
-                  Home
-                </Link>
-              </MenuItem>
-            </Menu>
+            ></Menu>
           </Box>
 
           <Typography
@@ -124,14 +108,14 @@ const NavBar = () => {
             Classroom Infinity
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
+            {/* <Button
               to='/'
               underline='none'
               component={RouterLink}
               sx={{ my: 2, color: 'white', display: 'block' }}
             >
               Home
-            </Button>
+            </Button> */}
           </Box>
           {!isAuthenticated() && (
             <>

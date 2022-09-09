@@ -23,6 +23,7 @@ const UserSchema = new mongoose.Schema({
     required: 'Please enter a password',
   },
   salt: String,
+  about: { type: String },
 });
 UserSchema.virtual('password')
   .set(function (password) {
