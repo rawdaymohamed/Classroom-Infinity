@@ -31,13 +31,15 @@ export const listUsers = async (req, res) => {
     });
   }
 };
-export const userByID = async (req, res, next, id) => {
+export const userByID = async (req, res, next, userId) => {
   try {
-    const user = await User.findById(id);
+    const user = await User.findById(userId);
     if (!user)
       return res.status(400).json({
         error: "Sorry this user doesn't exist",
       });
+    user.hashedPassword = undefined;
+    user.salt = undefined;
     req.profile = user;
     next();
   } catch (err) {

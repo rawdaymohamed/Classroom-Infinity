@@ -6,6 +6,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import userRoutes from './routes/user.routes';
 import authRoutes from './routes/auth.route';
+import courseRoutes from './routes/course.route';
 
 const app = express();
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 app.use(cors({ origin: '*' }));
 app.use('/', userRoutes);
 app.use('/', authRoutes);
+app.use('/', courseRoutes);
 app.listen(config.port, () => {
   console.log(`Express server listening on port ${config.port}`);
 });

@@ -2,8 +2,8 @@
 
 <div align="center">
 
-[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/rawda-yasser/classroom-infinity/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/rawda-yasser/classroom-infinity/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/rawda-developer/Classroom-Infinity/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/rawda-developer/Classroom-Infinity/pulls)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
 </div>
@@ -58,8 +58,8 @@ npm -v
 1. Clone the project
 
 ```
-git clone https://github.com/rawda-yasser/Media-Buzz
-cd Media-Buzz
+git clone https://github.com/rawda-developer/Classroom-Infinity
+cd Classroom-Infinity
 ```
 
 ### Run the Backend
@@ -101,4 +101,4 @@ Use this project as a guideline for building your next full stack website using 
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@RawdaYasser](https://github.com/rawda-yasser/) - Idea & Initial work
+- [@RawdaDeveloper](https://github.com/rawda-developer/) - Idea & Initial work
