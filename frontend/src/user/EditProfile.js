@@ -64,6 +64,7 @@ const EditProfile = () => {
       abortController.abort();
     };
   }, [userId]);
+
   const handleSubmit = () => {
     let userData = new FormData();
     name && userData.append('name', name);
@@ -71,7 +72,7 @@ const EditProfile = () => {
     password && userData.append('password', password);
     about && userData.append('about', about);
     photo && userData.append('photo', photo);
-    instructor && userData.append('instructor', instructor);
+    userData.append('instructor', instructor);
 
     const jwt = isAuthenticated();
     if (!jwt) {
@@ -81,6 +82,7 @@ const EditProfile = () => {
         if (data && data.error) {
           setError(data.error);
         } else if (data) {
+          console.log(data);
           setError('');
           setRedirectToProfile(true);
         }

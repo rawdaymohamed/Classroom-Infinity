@@ -53,7 +53,7 @@ const update = async (id, jwt, user) => {
       // body: JSON.stringify(user),
       body: user,
     });
-    return response.json();
+    return await response.json();
   } catch (err) {
     console.log(err);
   }
