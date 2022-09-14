@@ -24,7 +24,7 @@ export const createUser = async (req, res) => {
 export const listUsers = async (req, res) => {
   try {
     const users = await User.find().select('name updated created');
-    res.json(users);
+    return res.json(users);
   } catch (err) {
     return res.status(400).json({
       error: 'Cannot get users',
@@ -92,7 +92,7 @@ export const removeUser = async (req, res) => {
     const deletedUser = await user.remove();
     deletedUser.hashedPassword = undefined;
     deletedUser.salt = undefined;
-    res.json(deletedUser);
+    return res.json(deletedUser);
   } catch (err) {
     return res.status(400).json({
       error: "Sorry couldn't remove user",

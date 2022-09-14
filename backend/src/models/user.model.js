@@ -66,6 +66,7 @@ UserSchema.methods = {
       return 'Error encrypting the password';
     }
   },
+  // Todo update salt algorithm
   makeSalt: function () {
     return Math.round(new Date().valueOf() * Math.random()) + '';
   },

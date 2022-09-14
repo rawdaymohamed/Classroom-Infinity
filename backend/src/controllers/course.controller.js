@@ -12,7 +12,6 @@ export const createCourse = async (req, res) => {
         error: 'Image could not be uploaded',
       });
     }
-    console.log(fields);
     let course = new Course(fields);
     console.log(course);
     course.updated = Date.now();

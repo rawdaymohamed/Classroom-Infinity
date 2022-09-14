@@ -11,7 +11,7 @@
 ---
 
 <p align="center"> 
-Classroom infinity is an online classroom platform which allows instructors to add/update/delete courses. Each course is made of various lessons and every student can enroll in courses and track their progress. Instructors can track how many students have enrolled in a course, and how many have completed each course.  <br> 
+Classroom infinity is an E-Learning platform that connects instructors with students. Instructors can create/read/update/delete courses and each course is made of various lessons. Every student can enroll in any course and track their progress. Instructors can track how many students have enrolled in a course, and how many have completed each course.  <br> 
 </p>
 
 ## 📝 Table of Contents
@@ -24,7 +24,7 @@ Classroom infinity is an online classroom platform which allows instructors to a
 
 ## 🧐 About <a name = "about"></a>
 
-This project is built with the MERN Stack and has the following
+This project is built using the MERN Stack and has the following
 
 ### TODO
 
@@ -39,9 +39,9 @@ This project is built with the MERN Stack and has the following
 ### DONE
 
 - User Authentication
-- Profile page
-- Edit profile page
-- Delete User
+- Users can view profile pages
+- Users can edit their own profile pages
+- Users can delete their own profiles.
 - Add Instructor role to the backend and frontend
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
@@ -68,6 +68,12 @@ Start MongoDB
 
 ```
 sudo mongod --port 27017
+```
+
+Open a new terminal
+
+```
+sudo mongo --port 27017
 ```
 
 Open a new terminal
