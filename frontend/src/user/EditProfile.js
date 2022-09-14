@@ -118,7 +118,6 @@ const EditProfile = () => {
                   hidden
                   accept='image/*'
                   onChange={(e) => setPhoto(e.target.files[0])}
-                  value={photo}
                   type='file'
                 />
               </Button>
