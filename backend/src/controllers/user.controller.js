@@ -51,7 +51,7 @@ export const userByID = async (req, res, next, userId) => {
 export const readUser = (req, res) => {
   req.profile.hashedPassword = undefined;
   req.profile.salt = undefined;
-  req.profile.email = undefined;
+  // req.profile.email = undefined;
   return res.status(200).json(req.profile);
 };
 

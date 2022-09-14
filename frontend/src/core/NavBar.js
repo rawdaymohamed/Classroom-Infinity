@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+import { isAuthenticated } from '../auth/auth-helper';
+import Avatar from '@mui/material/Avatar';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -7,9 +10,6 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { isAuthenticated } from '../auth/auth-helper';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
@@ -106,16 +106,7 @@ const NavBar = () => {
           >
             Classroom Infinity
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {/* <Button
-              to='/'
-              underline='none'
-              component={RouterLink}
-              sx={{ my: 2, color: 'white', display: 'block' }}
-            >
-              Home
-            </Button> */}
-          </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}></Box>
           {isAuthenticated() && isAuthenticated().user.instructor && (
             <Button
               sx={{

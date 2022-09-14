@@ -49,6 +49,7 @@ const EditProfile = () => {
       setRedirectToLogin(true);
     } else {
       read(userId, jwt, signal).then((data) => {
+        console.log('DATA', data);
         if (data && data.error) {
           setError(data.error);
         } else if (data) {
@@ -71,6 +72,7 @@ const EditProfile = () => {
     about && userData.append('about', about);
     photo && userData.append('photo', photo);
     instructor && userData.append('instructor', instructor);
+
     const jwt = isAuthenticated();
     if (!jwt) {
       setRedirectToLogin(true);
@@ -114,6 +116,7 @@ const EditProfile = () => {
                   hidden
                   accept='image/*'
                   onChange={(e) => setPhoto(e.target.files[0])}
+                  value={photo}
                   type='file'
                 />
               </Button>
