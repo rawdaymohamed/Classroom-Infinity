@@ -2,6 +2,7 @@ import Course from '../models/course.model';
 import formidable from 'formidable';
 import extend from 'lodash/extend';
 import fs from 'fs';
+import { json } from 'body-parser';
 
 export const createCourse = async (req, res) => {
   let form = new formidable.IncomingForm();
@@ -63,4 +64,13 @@ export const isAuthorizedInstructor = async (req, res, next) =>{
     return res.json({error: "User isn't authorized"});
   }
   next();
+}
+export const courseList = (req, res) =>{
+   Course.find({instructor: req.profile._id}, (err, courses) => {
+
+      if (err){
+        return res.status(400).json({error: "Sorry we couldn't find courses"})
+      }
+      return res.json(courses)
+   }).populate("instructor", "_id name")
 }

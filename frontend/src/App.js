@@ -8,6 +8,7 @@ import EditProfile from './user/EditProfile';
 import DeleteProfile from './user/DeleteUser';
 import NewCourse from './course/NewCourse';
 import PrivateRoute from './privateRoute';
+import MyCourses from './course/MyCourses';
 const Home = () => <>Home</>;
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Route exact path='/signup' element={<Signup />} />
       <Route exact path='/users/:userId/profile' element={<Profile />} />
       <Route exact path='/users/:userId/courses/new' element={<PrivateRoute><NewCourse /></PrivateRoute>} />
+      <Route exact path='/users/:userId/courses' element={<PrivateRoute><MyCourses /></PrivateRoute>} />
       <Route
         exact
         path='/users/:userId/profile/edit'
