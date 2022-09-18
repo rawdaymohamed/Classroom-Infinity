@@ -18,6 +18,7 @@ import { Button, Link } from '@mui/material';
 import { clearJWT } from '../auth/auth-helper';
 
 const NavBar = () => {
+ 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -32,7 +33,6 @@ const NavBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
@@ -115,6 +115,8 @@ const NavBar = () => {
                 display: 'block',
                 fontWeight: 'bold',
               }}
+             component={RouterLink}
+             to={`/users/${isAuthenticated().user._id}/courses/new`}
             >
               Teach
             </Button>

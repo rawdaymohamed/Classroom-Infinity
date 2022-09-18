@@ -57,3 +57,10 @@ export const isInstructor = async (req, res, next) => {
   }
   next();
 };
+export const isAuthorizedInstructor = async (req, res, next) =>{
+  const isAuthInstructor = req.course && req.auth && req.course.instructor._id == req.auth._id
+  if (!isAuthInstructor){
+    return res.json({error: "User isn't authorized"});
+  }
+  next();
+}

@@ -6,6 +6,8 @@ import Signup from './user/Signup';
 import Profile from './user/Profile';
 import EditProfile from './user/EditProfile';
 import DeleteProfile from './user/DeleteUser';
+import NewCourse from './course/NewCourse';
+import PrivateRoute from './privateRoute';
 const Home = () => <>Home</>;
 
 function App() {
@@ -15,15 +17,16 @@ function App() {
       <Route exact path='/login' element={<Login />} />
       <Route exact path='/signup' element={<Signup />} />
       <Route exact path='/users/:userId/profile' element={<Profile />} />
+      <Route exact path='/users/:userId/courses/new' element={<PrivateRoute><NewCourse /></PrivateRoute>} />
       <Route
         exact
         path='/users/:userId/profile/edit'
-        element={<EditProfile />}
+        element={<PrivateRoute><EditProfile /></PrivateRoute>}
       />
       <Route
         exact
         path='/users/:userId/profile/delete'
-        element={<DeleteProfile />}
+        element={<PrivateRoute><DeleteProfile /></PrivateRoute>}
       />
       <Route path='*' element={<NotFound />} />
     </Routes>

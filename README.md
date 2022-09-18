@@ -11,7 +11,7 @@
 ---
 
 <p align="center"> 
-Classroom infinity is an E-Learning platform that connects instructors with students. Instructors can create/read/update/delete courses and each course is made of various lessons. Every student can enroll in any course and track their progress. Instructors can track how many students have enrolled in a course, and how many have completed each course.  <br> 
+Classroom infinity is a simple E-Learning platform that connects instructors with students. Instructors can create/read/update/delete courses and each course is made of various lessons. Every student can enroll in any course and track their progress. Instructors can track how many students have enrolled in a course, and how many have completed each course.  <br> 
 </p>
 
 ## 📝 Table of Contents
