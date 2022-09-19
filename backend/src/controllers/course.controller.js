@@ -1,8 +1,8 @@
-import Course from '../models/course.model';
-import formidable from 'formidable';
-import extend from 'lodash/extend';
-import fs from 'fs';
-import { json } from 'body-parser';
+import Course from "../models/course.model";
+import formidable from "formidable";
+import extend from "lodash/extend";
+import fs from "fs";
+import { json } from "body-parser";
 
 export const createCourse = async (req, res) => {
   let form = new formidable.IncomingForm();
@@ -10,7 +10,7 @@ export const createCourse = async (req, res) => {
   form.parse(req, async (err, fields, files) => {
     if (err) {
       return res.status(400).json({
-        error: 'Image could not be uploaded',
+        error: "Image could not be uploaded",
       });
     }
     let course = new Course(fields);
@@ -35,19 +35,19 @@ export const createCourse = async (req, res) => {
 export const courseByID = async (req, res, next, courseId) => {
   try {
     const course = await Course.findById(courseId).populate(
-      'instructor',
-      '_id name'
+      "instructor",
+      "_id name"
     );
 
     if (!course)
-      return res.status(400).json({
+      return res.status(404).json({
         error: "Sorry this course doesn't exist",
       });
     req.course = course;
     next();
   } catch (err) {
     return res.status(400).json({
-      error: 'Could not find course',
+      error: "Could not find course",
     });
   }
 };
@@ -58,27 +58,35 @@ export const isInstructor = async (req, res, next) => {
   }
   next();
 };
-export const isAuthorizedInstructor = async (req, res, next) =>{
-  const isAuthInstructor = req.course && req.auth && req.course.instructor._id == req.auth._id
-  if (!isAuthInstructor){
-    return res.json({error: "User isn't authorized"});
+export const isAuthorizedInstructor = async (req, res, next) => {
+  const isAuthInstructor =
+    req.course && req.auth && req.course.instructor._id == req.auth._id;
+  if (!isAuthInstructor) {
+    return res.json({ error: "User isn't authorized" });
   }
   next();
-}
-export const courseList = (req, res) =>{
-   Course.find({instructor: req.profile._id}, (err, courses) => {
-
-      if (err){
-        return res.status(400).json({error: "Sorry we couldn't find courses"})
-      }
-      return res.json(courses)
-   }).populate("instructor", "_id name")
-}
+};
+export const courseList = (req, res) => {
+  Course.find({ instructor: req.profile._id }, (err, courses) => {
+    if (err) {
+      return res.status(400).json({ error: "Sorry we couldn't find courses" });
+    }
+    return res.json(courses);
+  }).populate("instructor", "_id name");
+};
 export const getCoursePhoto = (req, res) => {
   if (req.course.image.data) {
-    res.set('Content-Type', req.course.image.contentType);
+    res.set("Content-Type", req.course.image.contentType);
     return res.send(req.course.image.data);
-  } else{
-    return res.json({message: "No photo available for this course"})
+  } else {
+    return res.sendFile("course.jpg", { root: "public" });
   }
-}
+};
+
+export const courseDefaultPhoto = (req, res) => {
+  return res.sendFile("course.jpg", { root: "public" });
+};
+export const readCourse = (req, res) => {
+  req.course.image = undefined;
+  return res.status(200).json(req.course);
+};
