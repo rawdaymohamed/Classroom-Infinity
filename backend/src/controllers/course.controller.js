@@ -74,3 +74,11 @@ export const courseList = (req, res) =>{
       return res.json(courses)
    }).populate("instructor", "_id name")
 }
+export const getCoursePhoto = (req, res) => {
+  if (req.course.image.data) {
+    res.set('Content-Type', req.course.image.contentType);
+    return res.send(req.course.image.data);
+  } else{
+    return res.json({message: "No photo available for this course"})
+  }
+}

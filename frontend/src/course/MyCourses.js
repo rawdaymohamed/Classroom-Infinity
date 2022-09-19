@@ -32,7 +32,7 @@ const MyCourses = () => {
             <Avatar alt={`${course.name} image`} variant="square" src={`/api/courses/${course.image}/image`} />
         </ListItemAvatar>
         <ListItemText
-            primary={`${course.name}`}
+            primary={<Typography component="h6">{course.name}</Typography>}
             secondary={
             <>
                 <Typography
