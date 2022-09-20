@@ -1,15 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 const LessonSchema = new mongoose.Schema({
   title: String,
   content: String,
   resourceURL: String,
 });
-const Lesson = mongoose.model('Lesson', LessonSchema);
+export const Lesson = mongoose.model("Lesson", LessonSchema);
 const CourseSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
-    required: 'Name is required',
+    required: "Name is required",
   },
   image: {
     data: Buffer,
@@ -21,7 +21,7 @@ const CourseSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    required: 'Category is required',
+    required: "Category is required",
   },
   updated: Date,
   created: {
@@ -30,7 +30,7 @@ const CourseSchema = new mongoose.Schema({
   },
   instructor: {
     type: mongoose.Schema.ObjectId,
-    ref: 'User',
+    ref: "User",
   },
   published: {
     type: Boolean,
@@ -38,4 +38,4 @@ const CourseSchema = new mongoose.Schema({
   },
   lessons: [LessonSchema],
 });
-export default mongoose.model('Course', CourseSchema);
+export default mongoose.model("Course", CourseSchema);

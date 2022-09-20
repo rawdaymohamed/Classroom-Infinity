@@ -48,7 +48,7 @@ const MyCourses = () => {
                 <Avatar
                   alt={`${course.name} image`}
                   variant="square"
-                  src={`/api/courses/${course.image}/image`}
+                  src={`/api/courses/${course._id}/photo`}
                 />
               </ListItemAvatar>
               <ListItemText
@@ -70,7 +70,6 @@ const MyCourses = () => {
           </Link>
         ))}
       </List>
-      
     </Paper>
   );
 };

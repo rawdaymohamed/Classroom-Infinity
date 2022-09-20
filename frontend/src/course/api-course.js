@@ -39,3 +39,18 @@ export const readCourse = async (courseId, signal) => {
     console.log(err);
   }
 };
+export const newLesson = async (courseId, jwt, lesson) => {
+  try {
+    const result = await fetch(`/api/courses/${courseId}/lessons/new`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(lesson),
+    });
+    return await result.json();
+  } catch (err) {
+    console.log(err);
+  }
+};

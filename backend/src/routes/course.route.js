@@ -9,6 +9,7 @@ import {
   getCoursePhoto,
   courseDefaultPhoto,
   readCourse,
+  createLesson,
 } from "../controllers/course.controller";
 import { userByID } from "../controllers/user.controller";
 const router = express.Router();
@@ -20,6 +21,7 @@ router
 router.route("/api/courses/defaultphoto").get(courseDefaultPhoto);
 router.route("/api/courses/:courseId").get(readCourse);
 router.route("/api/courses/:courseId/photo").get(getCoursePhoto);
+router.route("/api/courses/:courseId/lessons/new").put(createLesson);
 router.param("userId", userByID);
 router.param("courseId", courseByID);
 export default router;

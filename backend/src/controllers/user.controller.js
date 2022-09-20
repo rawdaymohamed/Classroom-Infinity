@@ -74,7 +74,6 @@ export const updateUser = async (req, res) => {
       await user.save();
 
       user.hashedPassword = undefined;
-      user.email = undefined;
       user.salt = undefined;
       user.updated = Date.now();
       return res.json(user);

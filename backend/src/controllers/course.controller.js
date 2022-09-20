@@ -1,8 +1,8 @@
 import Course from "../models/course.model";
+import { Lesson } from "../models/course.model";
 import formidable from "formidable";
 import extend from "lodash/extend";
 import fs from "fs";
-import { json } from "body-parser";
 
 export const createCourse = async (req, res) => {
   let form = new formidable.IncomingForm();
@@ -89,4 +89,22 @@ export const courseDefaultPhoto = (req, res) => {
 export const readCourse = (req, res) => {
   req.course.image = undefined;
   return res.status(200).json(req.course);
+};
+export const createLesson = async (req, res) => {
+  try {
+    const lesson = new Lesson(req.body);
+    await lesson.save();
+    const result = await Course.findByIdAndUpdate(
+      req.params.courseId,
+      { $push: { lessons: lesson }, updated: Date.now() },
+      { new: true }
+    )
+      .populate("instructor", "_id name")
+      .exec();
+    console.log(result);
+    console.log(req.body);
+    return res.json(result);
+  } catch (err) {
+    return res.status(400).json({ error: "Sorry we couldn't add the lesson" });
+  }
 };
