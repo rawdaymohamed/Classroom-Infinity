@@ -31,7 +31,6 @@ This project is built using the MERN Stack and has the following
 - Instructor can publish courses
 - Instructor can Update their course
 - Instructor can Delete their course
-- Instructor can add new lesson to a course
 - Students can enroll in courses
 - Students can Show Enrolled courses
 - Students can track progress and enrollment stats
@@ -43,6 +42,7 @@ This project is built using the MERN Stack and has the following
 - Users can edit their own profile pages
 - Users can delete their own profiles.
 - Add Instructor role to the backend and frontend
+- Instructor can add new lesson to a course
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
