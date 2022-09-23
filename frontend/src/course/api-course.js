@@ -70,7 +70,7 @@ export const publishCourse = async (courseId, jwt) => {
     console.log(err);
   }
 };
-export const deleteCourse = async (courseId, jwt) =>{
+export const deleteCourse = async (courseId, jwt) => {
   try {
     const result = await fetch(
       `/api/users/${jwt.user._id}/courses/${courseId}/`,
@@ -85,5 +85,19 @@ export const deleteCourse = async (courseId, jwt) =>{
   } catch (err) {
     console.log(err);
   }
- 
-}
+};
+export const editCourse = async (userId, jwt, courseId, course) => {
+  try {
+    const response = await fetch(`/api/users/${userId}/courses/${courseId}`, {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        Authorization: "Bearer " + jwt.token,
+      },
+      body: course,
+    });
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};

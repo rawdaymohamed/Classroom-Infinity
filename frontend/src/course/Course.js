@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Navigate, useParams } from "react-router";
+import { Link as RouterLink } from "react-router-dom";
 import { publishCourse, readCourse, deleteCourse } from "./api-course";
 import { isAuthenticated } from "../auth/auth-helper";
 import {
@@ -69,6 +70,7 @@ const Course = ({ onDeleteCourse }) => {
       }
     });
   };
+
   if (!course) return <h3>No course found</h3>;
   if (redirectCourse) return <Navigate to={`/users/${jwt.user._id}/courses`} />;
   return (
@@ -112,7 +114,7 @@ const Course = ({ onDeleteCourse }) => {
                     <DeleteIcon />
                   </IconButton>
                   {!course.published && (
-                    <IconButton size="small">
+                    <IconButton size="small" component={RouterLink} to={`/users/${jwt.user._id}/courses/${courseId}/edit`}>
                       <EditIcon />
                     </IconButton>
                   )}

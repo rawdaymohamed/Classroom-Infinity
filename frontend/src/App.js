@@ -10,6 +10,7 @@ import NewCourse from "./course/NewCourse";
 import PrivateRoute from "./privateRoute";
 import MyCourses from "./course/MyCourses";
 import Course from "./course/Course";
+import EditCourse from "./course/EditCourse";
 const Home = () => <>Home</>;
 
 function App() {
@@ -29,6 +30,16 @@ function App() {
           </PrivateRoute>
         }
       />
+      <Route
+        exact
+        path="/users/:userId/courses/:courseId/edit"
+        element={
+          <PrivateRoute>
+            <EditCourse />
+          </PrivateRoute>
+        }
+      />
+
       <Route
         exact
         path="/users/:userId/courses"

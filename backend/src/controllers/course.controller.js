@@ -129,3 +129,36 @@ export const deleteCourse = async (req, res) => {
     res.json({ error: "Can't delete course" });
   }
 };
+export const updateCourse = async (req, res) => {
+  let form = new formidable.IncomingForm();
+  form.keepExtensions = true;
+  form.parse(req, async (err, fields, files) => {
+    if (err) {
+      return res.status(400).json({
+        error: "Image could not be uploaded",
+      });
+    }
+    let course = req.course;
+    course.name = fields.name;
+    course.desription = fields.description;
+
+    course.updated = Date.now();
+    course.instructor = req.profile;
+    if (files.image) {
+      course.image.data = fs.readFileSync(files.image.filepath);
+      course.image.contentType = files.image.type;
+    }
+
+    try {
+      const result = await Course.findByIdAndUpdate(
+        req.params.courseId,
+        course
+      );
+      return res.status(200).json(result);
+    } catch (err) {
+      return res.status(400).json({
+        error: "Sorry we couldn't update the course",
+      });
+    }
+  });
+};
