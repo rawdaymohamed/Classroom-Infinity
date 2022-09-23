@@ -28,7 +28,6 @@ This project is built using the MERN Stack and has the following
 
 ### TODO
 
-- Instructor can publish courses
 - Instructor can Update their course
 - Instructor can Delete their course
 - Students can enroll in courses
@@ -43,6 +42,7 @@ This project is built using the MERN Stack and has the following
 - Users can delete their own profiles.
 - Add Instructor role to the backend and frontend
 - Instructor can add new lesson to a course
+- Instructor can publish courses
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
