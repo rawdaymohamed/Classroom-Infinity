@@ -120,3 +120,12 @@ export const publishCourse = async (req, res) => {
     return res.status(400).json({ error: "Couldn't publish course" });
   }
 };
+export const deleteCourse = async (req, res) => {
+  try {
+    const course = req.course;
+    await Course.findByIdAndRemove(course._id);
+    return res.json({ message: "Course deleted successfully" });
+  } catch (err) {
+    res.json({ error: "Can't delete course" });
+  }
+};

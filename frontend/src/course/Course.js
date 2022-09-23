@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { publishCourse, readCourse } from "./api-course";
+import { Navigate, useParams } from "react-router";
+import { publishCourse, readCourse, deleteCourse } from "./api-course";
 import { isAuthenticated } from "../auth/auth-helper";
 import {
   Card,
@@ -23,9 +23,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ErrorIcon from "@mui/icons-material/Error";
 import { Link } from "react-router-dom";
 import NewLesson from "./NewLesson";
-const Course = () => {
+const Course = ({ onDeleteCourse }) => {
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
+  const [redirectCourse, setRedirectCourses] = useState(false);
   const { courseId } = useParams();
   const jwt = isAuthenticated();
   const photoUrl = `http://localhost:4000/api/courses/${courseId}/photo`;
@@ -60,7 +61,16 @@ const Course = () => {
       }
     });
   };
+  const onDelete = () => {
+    deleteCourse(courseId, jwt).then((data) => {
+      if (data && data.error) setError(data.error);
+      else if (data) {
+        setRedirectCourses(true);
+      }
+    });
+  };
   if (!course) return <h3>No course found</h3>;
+  if (redirectCourse) return <Navigate to={`/users/${jwt.user._id}/courses`} />;
   return (
     <>
       {course && (
@@ -98,7 +108,7 @@ const Course = () => {
               isAuthenticated().user.instructor &&
               isAuthenticated().user._id == course.instructor._id && (
                 <>
-                  <IconButton size="small">
+                  <IconButton onClick={onDelete} size="small">
                     <DeleteIcon />
                   </IconButton>
                   {!course.published && (

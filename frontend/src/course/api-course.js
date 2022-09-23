@@ -70,3 +70,20 @@ export const publishCourse = async (courseId, jwt) => {
     console.log(err);
   }
 };
+export const deleteCourse = async (courseId, jwt) =>{
+  try {
+    const result = await fetch(
+      `/api/users/${jwt.user._id}/courses/${courseId}/`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: "Bearer " + jwt.token,
+        },
+      }
+    );
+    return await result.json();
+  } catch (err) {
+    console.log(err);
+  }
+ 
+}
