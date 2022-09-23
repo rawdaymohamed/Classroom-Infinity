@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { readCourse } from "./api-course";
+import { publishCourse, readCourse } from "./api-course";
 import { isAuthenticated } from "../auth/auth-helper";
 import {
   Card,
@@ -27,6 +27,7 @@ const Course = () => {
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const { courseId } = useParams();
+  const jwt = isAuthenticated();
   const photoUrl = `http://localhost:4000/api/courses/${courseId}/photo`;
   const addLesson = (data) => {
     setCourse(data);
@@ -40,13 +41,25 @@ const Course = () => {
         setError(data.error);
       } else if (data) {
         setCourse(data);
+        setError(null);
       }
     });
 
     return function cleanup() {
       abortController.abort();
     };
-  }, [courseId]);
+  }, [courseId, jwt]);
+  const onPublish = () => {
+    publishCourse(courseId, jwt).then((data) => {
+      if (data && data.error) {
+        console.log(data.error);
+        console.log(jwt);
+        setError(data.error);
+      } else if (data) {
+        setCourse(data);
+      }
+    });
+  };
   if (!course) return <h3>No course found</h3>;
   return (
     <>
@@ -93,7 +106,11 @@ const Course = () => {
                       <EditIcon />
                     </IconButton>
                   )}
-                  {!course.published && <Button size="medium">Publish</Button>}
+                  {!course.published && (
+                    <Button size="medium" onClick={onPublish}>
+                      Publish
+                    </Button>
+                  )}
                   <NewLesson courseId={courseId} addLesson={addLesson} />
                 </>
               )}

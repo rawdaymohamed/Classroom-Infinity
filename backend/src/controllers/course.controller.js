@@ -108,3 +108,15 @@ export const createLesson = async (req, res) => {
     return res.status(400).json({ error: "Sorry we couldn't add the lesson" });
   }
 };
+export const publishCourse = async (req, res) => {
+  try {
+    const course = req.course;
+    course.published = true;
+    const result = await Course.findByIdAndUpdate(course._id, course, {
+      new: true,
+    });
+    return res.json(result);
+  } catch (err) {
+    return res.status(400).json({ error: "Couldn't publish course" });
+  }
+};

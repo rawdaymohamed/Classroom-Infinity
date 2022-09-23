@@ -54,3 +54,19 @@ export const newLesson = async (courseId, jwt, lesson) => {
     console.log(err);
   }
 };
+export const publishCourse = async (courseId, jwt) => {
+  try {
+    const result = await fetch(
+      `/api/users/${jwt.user._id}/courses/${courseId}/publish`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: "Bearer " + jwt.token,
+        },
+      }
+    );
+    return await result.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
