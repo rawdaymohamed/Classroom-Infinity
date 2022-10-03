@@ -101,3 +101,6 @@ export const editCourse = async (userId, jwt, courseId, course) => {
     console.log(err);
   }
 };
+export const getAllCourses = async ()=>{
+
+}

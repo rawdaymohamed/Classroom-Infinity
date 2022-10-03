@@ -12,7 +12,8 @@ import {
   createLesson,
   publishCourse,
   deleteCourse,
-  updateCourse
+  updateCourse,
+  getAllCourses,
 } from "../controllers/course.controller";
 import { userByID } from "../controllers/user.controller";
 const router = express.Router();
@@ -32,7 +33,7 @@ router
   .route("/api/users/:userId/courses/:courseId")
   .put(requireLogin, hasAuthorization, isAuthorizedInstructor, updateCourse)
   .delete(requireLogin, hasAuthorization, isAuthorizedInstructor, deleteCourse);
-
+router.route("/api/courses").get(getAllCourses);
 router.param("userId", userByID);
 router.param("courseId", courseByID);
 export default router;

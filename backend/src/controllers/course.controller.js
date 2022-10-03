@@ -162,3 +162,11 @@ export const updateCourse = async (req, res) => {
     }
   });
 };
+export const getAllCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({}).populate("instructor", "_id name");
+    return res.status(200).json(courses);
+  } catch (err) {
+    return res.status(400).json({ error: "Can't get courses" });
+  }
+};
