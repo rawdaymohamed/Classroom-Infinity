@@ -14,6 +14,8 @@
 Classroom infinity is a simple E-Learning platform that connects instructors with students. Instructors can create/read/update/delete courses and each course is made of various lessons. Every student can enroll in any course and track their progress. Instructors can track how many students have enrolled in a course, and how many have completed each course.  <br> 
 </p>
 
+![Classroom Inf](./docs/Classroom-Infinity.png)
+
 ## 📝 Table of Contents
 
 - [About](#about)
@@ -28,8 +30,6 @@ This project is built using the MERN Stack and has the following
 
 ### TODO
 
-- Students can enroll in courses
-- Students can Show Enrolled courses
 - Students can track progress and enrollment stats
 
 ### DONE
@@ -43,6 +43,8 @@ This project is built using the MERN Stack and has the following
 - Instructor can publish courses
 - Instructor can Delete their course
 - Instructor can Update their course
+- Students can enroll in courses
+- Students can Show Enrolled courses
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
