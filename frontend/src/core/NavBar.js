@@ -1,24 +1,23 @@
-import * as React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { isAuthenticated } from '../auth/auth-helper';
-import Avatar from '@mui/material/Avatar';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import * as React from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { isAuthenticated } from "../auth/auth-helper";
+import Avatar from "@mui/material/Avatar";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
 
-import { Button, Link } from '@mui/material';
-import { clearJWT } from '../auth/auth-helper';
+import { Button, Link } from "@mui/material";
+import { clearJWT } from "../auth/auth-helper";
 
 const NavBar = () => {
- 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -38,85 +37,86 @@ const NavBar = () => {
   };
 
   return (
-    <AppBar position='static' sx={{ mb: 2 }}>
-      <Container maxWidth='xl'>
+    <AppBar position="static" sx={{ mb: 2 }}>
+      <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant='h6'
+            variant="h6"
             noWrap
             component={RouterLink}
-            to='/'
+            to="/"
             sx={{
               mr: 4,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'Lobster',
-              letterSpacing: '.15rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "Lobster",
+              letterSpacing: ".15rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             Classroom Infinity
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
-              size='large'
-              aria-label='account of current user'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color='inherit'
+              color="inherit"
             >
               <MenuIcon />
             </IconButton>
             <Menu
-              id='menu-appbar'
+              id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             ></Menu>
           </Box>
 
           <Typography
-            variant='h5'
+            variant="h5"
             noWrap
             component={RouterLink}
-            to='/'
+            to="/"
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'Lobster',
-              letterSpacing: '.15rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              fontFamily: "Lobster",
+              letterSpacing: ".15rem",
+              color: "inherit",
+              textDecoration: "none",
             }}
           >
             Classroom Infinity
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}></Box>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
+
           {isAuthenticated() && isAuthenticated().user.instructor && (
             <Button
               sx={{
                 mx: 1,
-                color: 'white',
-                display: 'block',
-                fontWeight: 'bold',
+                color: "white",
+                display: "block",
+                fontWeight: "bold",
               }}
-             component={RouterLink}
-             to={`/users/${isAuthenticated().user._id}/courses/new`}
+              component={RouterLink}
+              to={`/users/${isAuthenticated().user._id}/courses/new`}
             >
               Teach
             </Button>
@@ -125,31 +125,31 @@ const NavBar = () => {
             <Button
               sx={{
                 mr: 2,
-                color: 'white',
-                display: 'block',
-                fontWeight: 'bold',
+                color: "white",
+                display: "block",
+                fontWeight: "bold",
               }}
-             component={RouterLink}
-             to={`/users/${isAuthenticated().user._id}/courses`}
+              component={RouterLink}
+              to={`/users/${isAuthenticated().user._id}/courses`}
             >
-             My Courses
+              My Courses
             </Button>
           )}
           {!isAuthenticated() && (
             <>
               <Button
-                to='/login'
-                underline='none'
+                to="/login"
+                underline="none"
                 component={RouterLink}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
                 Login
               </Button>
               <Button
-                to='/signup'
-                underline='none'
+                to="/signup"
+                underline="none"
                 component={RouterLink}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: "white", display: "block" }}
               >
                 Sign up
               </Button>
@@ -157,7 +157,7 @@ const NavBar = () => {
           )}
           {isAuthenticated() && (
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title='Open settings'>
+              <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar
                     alt={`${isAuthenticated().user.name} avatar`}
@@ -166,17 +166,17 @@ const NavBar = () => {
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px' }}
-                id='menu-appbar'
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 keepMounted
                 transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
+                  vertical: "top",
+                  horizontal: "right",
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
@@ -186,17 +186,25 @@ const NavBar = () => {
                   to={`/users/${isAuthenticated().user._id}/profile`}
                   onClick={handleCloseUserMenu}
                 >
-                  <Typography textAlign='center'>My Profile</Typography>
+                  <Typography textAlign="center">My Profile</Typography>
+                </MenuItem>
+
+                <MenuItem
+                  component={RouterLink}
+                  to={`/enrolled-courses`}
+                  onClick={handleCloseUserMenu}
+                >
+                  <Typography textAlign="center">My Courses</Typography>
                 </MenuItem>
                 <MenuItem
                   onClick={() => {
                     handleCloseUserMenu();
                     clearJWT(() => {
-                      navigate('/');
+                      navigate("/");
                     });
                   }}
                 >
-                  <Typography textAlign='center'>Logout</Typography>
+                  <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
               </Menu>
             </Box>

@@ -101,6 +101,22 @@ export const editCourse = async (userId, jwt, courseId, course) => {
     console.log(err);
   }
 };
+export const getEnrolledCourses = async (jwt) => {
+  try {
+    const response = await fetch(
+      `/api/users/${jwt.user._id}/courses/enrollments`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + jwt.token,
+        },
+      }
+    );
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
 export const getAllCourses = async () => {
   try {
     const result = await fetch("/api/courses/", {

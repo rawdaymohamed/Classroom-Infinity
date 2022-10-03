@@ -12,6 +12,7 @@ import MyCourses from "./course/MyCourses";
 import Course from "./course/Course";
 import EditCourse from "./course/EditCourse";
 import AllCourses from "./course/AllCourses";
+import EnrolledCourses from "./course/EnrolledCourses";
 const Home = () => <>Home</>;
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
         }
       />
       <Route path="/courses/all" element={<AllCourses />} />
+      <Route path="/enrolled-courses" element={<EnrolledCourses />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
