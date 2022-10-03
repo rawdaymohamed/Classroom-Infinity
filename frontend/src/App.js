@@ -11,6 +11,7 @@ import PrivateRoute from "./privateRoute";
 import MyCourses from "./course/MyCourses";
 import Course from "./course/Course";
 import EditCourse from "./course/EditCourse";
+import AllCourses from "./course/AllCourses";
 const Home = () => <>Home</>;
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
           </PrivateRoute>
         }
       />
+      <Route path="/courses/all" element={<AllCourses />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

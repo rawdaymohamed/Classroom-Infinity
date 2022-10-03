@@ -101,6 +101,13 @@ export const editCourse = async (userId, jwt, courseId, course) => {
     console.log(err);
   }
 };
-export const getAllCourses = async ()=>{
-
-}
+export const getAllCourses = async () => {
+  try {
+    const result = await fetch("/api/courses/", {
+      method: "GET",
+    });
+    return result.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
