@@ -121,6 +121,20 @@ const NavBar = () => {
               Teach
             </Button>
           )}
+          {isAuthenticated() && (
+            <Button
+              sx={{
+                mr: 2,
+                color: "white",
+                display: "block",
+                fontWeight: "bold",
+              }}
+              component={RouterLink}
+              to={`/courses/all`}
+            >
+              All Courses
+            </Button>
+          )}
           {isAuthenticated() && isAuthenticated().user.instructor && (
             <Button
               sx={{
