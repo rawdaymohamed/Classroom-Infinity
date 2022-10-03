@@ -1,7 +1,13 @@
 import { useState, useEffect } from "react";
 import { Navigate, useParams } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
-import { publishCourse, readCourse, deleteCourse } from "./api-course";
+import {
+  publishCourse,
+  readCourse,
+  deleteCourse,
+  enroll,
+  isEnrolled,
+} from "./api-course";
 import { isAuthenticated } from "../auth/auth-helper";
 import {
   Card,
@@ -18,6 +24,7 @@ import {
   List,
   ListItemText,
   Divider,
+  Alert,
 } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -25,6 +32,8 @@ import ErrorIcon from "@mui/icons-material/Error";
 import { Link } from "react-router-dom";
 import NewLesson from "./NewLesson";
 const Course = ({ onDeleteCourse }) => {
+  const [enrolled, setEnrolled] = useState(false);
+  const [message, setMessage] = useState("");
   const [course, setCourse] = useState(null);
   const [error, setError] = useState(null);
   const [redirectCourse, setRedirectCourses] = useState(false);
@@ -45,12 +54,32 @@ const Course = ({ onDeleteCourse }) => {
         setCourse(data);
         setError(null);
       }
+      isEnrolled(jwt, courseId).then((data) => {
+        if (data && data.error) {
+          setError(data.error);
+        } else if (data) {
+          setEnrolled(data);
+        }
+      });
     });
 
     return function cleanup() {
       abortController.abort();
     };
   }, [courseId, jwt]);
+  const onEnroll = () => {
+    if (!enrolled) {
+      enroll(jwt, courseId).then((data) => {
+        if (data && data.error) {
+          setError(data.error);
+        } else if (data) {
+          setMessage("You successfully enrolled");
+        }
+      });
+    } else {
+      setError("You're already enrolled");
+    }
+  };
   const onPublish = () => {
     publishCourse(courseId, jwt).then((data) => {
       if (data && data.error) {
@@ -106,6 +135,9 @@ const Course = ({ onDeleteCourse }) => {
             />
           </CardContent>
           <CardActions>
+            {isAuthenticated() && !enrolled && (
+              <Button onClick={onEnroll}>Enroll</Button>
+            )}
             {isAuthenticated() &&
               isAuthenticated().user.instructor &&
               isAuthenticated().user._id == course.instructor._id && (
@@ -114,7 +146,11 @@ const Course = ({ onDeleteCourse }) => {
                     <DeleteIcon />
                   </IconButton>
                   {!course.published && (
-                    <IconButton size="small" component={RouterLink} to={`/users/${jwt.user._id}/courses/${courseId}/edit`}>
+                    <IconButton
+                      size="small"
+                      component={RouterLink}
+                      to={`/users/${jwt.user._id}/courses/${courseId}/edit`}
+                    >
                       <EditIcon />
                     </IconButton>
                   )}
@@ -147,7 +183,11 @@ const Course = ({ onDeleteCourse }) => {
           </div>
         </Card>
       )}
-
+      {message && (
+        <Alert severity="success" color="info">
+          {message}
+        </Alert>
+      )}
       {error && (
         <Typography
           component="p"

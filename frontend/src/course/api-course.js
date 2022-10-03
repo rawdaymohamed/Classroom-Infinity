@@ -127,3 +127,35 @@ export const getAllCourses = async () => {
     console.log(err);
   }
 };
+export const enroll = async (jwt, courseId) => {
+  try {
+    const result = await fetch(
+      `/api/users/${jwt.user._id}/courses/${courseId}/enroll`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + jwt.token,
+        },
+      }
+    );
+    return result.json();
+  } catch (err) {
+    console.log(err);
+  }
+};
+export const isEnrolled = async (jwt, courseId) => {
+  try {
+    const result = await fetch(
+      `/api/users/${jwt.user._id}/courses/${courseId}/is-enrolled`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + jwt.token,
+        },
+      }
+    );
+    return result.json();
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -51,7 +51,7 @@ const EnrolledCourses = () => {
     return (
       <>
         <Paper elevation={3} sx={{ maxWidth: 600, mx: "auto", padding: 3 }}>
-          <Typography variant="h5">All Courses</Typography>
+          <Typography variant="h5">Enrolled Courses</Typography>
 
           <List
             sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}

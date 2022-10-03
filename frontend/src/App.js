@@ -13,7 +13,7 @@ import Course from "./course/Course";
 import EditCourse from "./course/EditCourse";
 import AllCourses from "./course/AllCourses";
 import EnrolledCourses from "./course/EnrolledCourses";
-const Home = () => <>Home</>;
+import Home from "./core/Home";
 
 function App() {
   return (

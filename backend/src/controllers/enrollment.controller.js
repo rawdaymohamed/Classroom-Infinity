@@ -44,3 +44,14 @@ export const getEnrollments = async (req, res) => {
     return res.status(400).json({ error: "Couldn't get enrolled course" });
   }
 };
+export const isEnrolled = async (req, res) => {
+  try {
+    const courseFound = await Enrollment.findOne({
+      courseId: req.params.courseId,
+      userId: req.params.userId,
+    });
+    return res.status(200).json(courseFound ? true : false);
+  } catch (err) {
+    return res.status(400).json({ error: "Sorry there's an error" });
+  }
+};
