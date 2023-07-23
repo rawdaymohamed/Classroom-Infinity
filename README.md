@@ -28,10 +28,6 @@ Classroom infinity is a simple E-Learning platform that connects instructors wit
 
 This project is built using the MERN Stack and has the following
 
-### TODO
-
-- Students can track progress and enrollment stats
-
 ### DONE
 
 - User Authentication
@@ -60,7 +56,7 @@ npm -v
 1. Clone the project
 
 ```
-git clone https://github.com/rawda-developer/Classroom-Infinity
+git clone https://github.com/rawda-yasser/Classroom-Infinity
 cd Classroom-Infinity
 ```
 
@@ -109,4 +105,4 @@ Use this project as a guideline for building your next full stack website using 
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@RawdaDeveloper](https://github.com/rawda-developer/) - Idea & Initial work
+- [@RawdaYasser](https://github.com/rawda-yasser/) - Idea & Initial work
