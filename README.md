@@ -26,9 +26,8 @@ Classroom infinity is a simple E-Learning platform that connects instructors wit
 
 ## 🧐 About <a name = "about"></a>
 
-This project is built using the MERN Stack and has the following
 
-### DONE
+### Features
 
 - User Authentication
 - Users can view profile pages
