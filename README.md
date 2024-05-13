@@ -31,10 +31,10 @@ Classroom infinity is a simple E-Learning platform that connects instructors wit
 
 - User Authentication
 - Users can view profile pages
-- Users can edit their own profile pages
-- Users can delete their own profiles.
+- Users can edit their profile pages
+- Users can delete their profiles.
 - Add Instructor role to the backend and frontend
-- Instructor can add new lesson to a course
+- Instructor can add new lessons to a course
 - Instructor can publish courses
 - Instructor can Delete their course
 - Instructor can Update their course
@@ -93,7 +93,7 @@ npm start
 
 ## 🎈 Usage <a name="usage"></a>
 
-Use this project as a guideline for building your next full stack website using MERN stack and Material UI.
+Use this project as a guideline for building your next full-stack website using MERN stack and Material UI.
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
@@ -104,4 +104,4 @@ Use this project as a guideline for building your next full stack website using 
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@RawdaYasser](https://github.com/rawda-yasser/) - Idea & Initial work
+- [@RawdaYasser](https://github.com/rawdaymohamed/) - Idea & Initial work
